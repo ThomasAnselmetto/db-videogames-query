@@ -113,10 +113,16 @@ ON c.id=cv.category_id;
 SELECT DISTINCT sh.id,sh.name,sh.city FROM `software_houses` AS sh JOIN videogames AS v ON sh.id=v.software_house_id WHERE v.release_date > '2020-01-01';
 
 5- Selezionare i premi ricevuti da ogni software house per i videogiochi che ha prodotto (55)
+SELECT sh.id AS software_house_id, sh.name AS software_houses_name, a.id, a.name, a.description
+FROM software_houses sh
+JOIN videogames v ON sh.id = v.software_house_id
+JOIN award_videogame av ON v.id = av.videogame_id
+JOIN awards a ON av.award_id = a.id
 
 
 6- Selezionare categorie e classificazioni PEGI dei videogiochi che hanno ricevuto recensioni da 4 e 5 stelle, mostrandole una sola volta (3363)
-
+SBLAGLIATO
+SELECT DISTINCT v.id AS videogame_id FROM `videogames` AS v JOIN pegi_label_videogame AS pv ON v.id=pv.videogame_id JOIN pegi_labels AS pegi ON pegi.id=pv.pegi_label_id JOIN category_videogame AS cv ON v.id=cv.videogame_id JOIN categories AS cat ON cat.id=cv.category_id JOIN reviews ON v.id=reviews.videogame_id WHERE reviews.rating > 3;
 
 7- Selezionare quali giochi erano presenti nei tornei nei quali hanno partecipato i giocatori il cui nome inizia per 'S' (474)
 
