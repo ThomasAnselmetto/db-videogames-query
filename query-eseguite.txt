@@ -86,10 +86,10 @@ ORDER BY `AVG(rating)` DESC;
 JOIN
 
 1- Selezionare i dati di tutti giocatori che hanno scritto almeno una recensione, mostrandoli una sola volta (996)
-SELECT DISTINCT(nickname), players.name, players.lastname,players.city
-FROM `players`
-JOIN `reviews`
-ON `players`.`id` = `reviews`.`player_id`;
+SELECT DISTINCT nickname,players.name,players.lastname,players.city
+FROM players
+JOIN reviews
+ON players.id = reviews.player_id;
 
 2- Sezionare tutti i videogame dei tornei tenuti nel 2016, mostrandoli una sola volta (226)
 
@@ -110,7 +110,7 @@ JOIN categories AS c
 ON c.id=cv.category_id;
 
 4- Selezionare i dati di tutte le software house che hanno rilasciato almeno un gioco dopo il 2020, mostrandoli una sola volta (6)
-
+SELECT DISTINCT sh.id,sh.name,sh.city FROM `software_houses` AS sh JOIN videogames AS v ON sh.id=v.software_house_id WHERE v.release_date > '2020-01-01';
 
 5- Selezionare i premi ricevuti da ogni software house per i videogiochi che ha prodotto (55)
 
